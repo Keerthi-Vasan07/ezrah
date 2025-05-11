@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ezrah Marketplace | Handmade Artisan Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FFFBF5',
+                            100: '#FDF6EC',
+                        },
+                        indigo: {
+                            700: '#4F46E5',
+                        },
+                        gold: {
+                            400: '#F9BC60',
+                        }
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FDF6EC;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .filter-item:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+        }
+        .active-filter {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: #4F46E5;
+            font-weight: 500;
+        }
+        .search-bar:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+        .nav-link:hover {
+            color: #4F46E5;
+        }
+        .nav-link:hover::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 2px;
+            background-color: #4F46E5;
+            margin: 0 auto;
+            margin-top: 4px;
+        }
+        .active-nav::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 2px;
+            background-color: #4F46E5;
+            margin: 0 auto;
+            margin-top: 4px;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-indigo-700 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    E
+                </div>
+                <span class="text-xl font-semibold text-gray-800">Ezrah</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="front.html" class="nav-link text-gray-600">Home</a>
+                <a href="comm.html" class="nav-link text-gray-600">Community</a>
+                <a href="mp.html" class="nav-link active-nav text-indigo-700">Marketplace</a>
+                <a href="#" class="nav-link text-gray-600">Ezrah Vision</a>
+                <a href="about.html" class="nav-link text-gray-600">About</a>
+            </div>
+            
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row">
+        <!-- Sidebar Filters -->
+        <div class="w-full md:w-1/4 lg:w-1/5 mb-8 md:mb-0 md:pr-6">
+            <div class="bg-white rounded-xl shadow-sm p-6 sticky top-24">
+                <h3 class="font-semibold text-lg mb-4 flex items-center">
+                    <i class="fas fa-sliders-h text-gray-500 mr-2"></i>
+                    Filters
+                </h3>
+                
+                <!-- Search -->
+                <div class="mb-6">
+                    <div class="relative">
+                        <input type="text" placeholder="Search products..." 
+                               class="search-bar w-full border border-gray-200 rounded-lg py-2 pl-10 pr-4 focus:border-indigo-300 transition">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Price Filter -->
+                <div class="mb-6">
+                    <h4 class="font-medium text-gray-700 mb-3">Price Range</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="radio" id="price-all" name="price" class="mr-2" checked>
+                            <label for="price-all" class="cursor-pointer">All Prices</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="radio" id="price-under50" name="price" class="mr-2">
+                            <label for="price-under50" class="cursor-pointer">Under $50</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="radio" id="price-50-100" name="price" class="mr-2">
+                            <label for="price-50-100" class="cursor-pointer">$50 - $100</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="radio" id="price-over100" name="price" class="mr-2">
+                            <label for="price-over100" class="cursor-pointer">Over $100</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Material Filter -->
+                <div class="mb-6">
+                    <h4 class="font-medium text-gray-700 mb-3">Material</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="checkbox" id="material-wood" class="mr-2">
+                            <label for="material-wood" class="cursor-pointer">Wood</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="checkbox" id="material-clay" class="mr-2">
+                            <label for="material-clay" class="cursor-pointer">Clay/Ceramic</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="checkbox" id="material-textile" class="mr-2">
+                            <label for="material-textile" class="cursor-pointer">Textile</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="checkbox" id="material-metal" class="mr-2">
+                            <label for="material-metal" class="cursor-pointer">Metal</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="checkbox" id="material-glass" class="mr-2">
+                            <label for="material-glass" class="cursor-pointer">Glass</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Location Filter -->
+                <div class="mb-6">
+                    <h4 class="font-medium text-gray-700 mb-3">Location</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="radio" id="location-all" name="location" class="mr-2" checked>
+                            <label for="location-all" class="cursor-pointer">Anywhere</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="radio" id="location-local" name="location" class="mr-2">
+                            <label for="location-local" class="cursor-pointer">My Region</label>
+                        </div>
+                        <div class="flex items-center filter-item p-2 rounded-lg cursor-pointer">
+                            <input type="radio" id="location-us" name="location" class="mr-2">
+                            <label for="location-us" class="cursor-pointer">United States</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full bg-indigo-700 text-white py-2 rounded-lg font-medium hover:bg-indigo-800 transition">
+                    Apply Filters
+                </button>
+            </div>
+            
+            <!-- Featured Artisan -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mt-6">
+                <h3 class="font-semibold text-lg mb-4">Featured Artisan</h3>
+                <div class="flex items-center mb-4">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Artisan" class="w-12 h-12 rounded-full object-cover mr-3">
+                    <div>
+                        <h4 class="font-medium">Sarah Johnson</h4>
+                        <p class="text-sm text-gray-500">Textile Artist</p>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                     alt="Artisan work" class="w-full h-40 object-cover rounded-lg mb-4">
+                <p class="text-sm text-gray-600 mb-4">Specializing in hand-dyed silk scarves using natural dyes from plants in my garden.</p>
+                <button class="w-full border border-indigo-700 text-indigo-700 py-2 rounded-lg font-medium hover:bg-indigo-50 transition">
+                    View Profile
+                </button>
+            </div>
+        </div>
+        
+        <!-- Product Grid -->
+        <div class="w-full md:w-3/4 lg:w-4/5">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4 md:mb-0">Discover Unique Handmade Products</h1>
+                <div class="flex items-center">
+                    <span class="text-gray-600 mr-3">Sort by:</span>
+                    <select class="border border-gray-200 rounded-lg py-2 px-3 focus:outline-none focus:ring-1 focus:ring-indigo-300">
+                        <option>Featured</option>
+                        <option>Newest</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Most Popular</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Category Tabs -->
+            <div class="flex overflow-x-auto scrollbar-hide mb-8">
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 rounded-full bg-indigo-700 text-white">All Items</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50">Pottery</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50">Jewelry</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50">Textiles</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50">Home Decor</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50">Woodwork</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50">Glass Art</button>
+                </div>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="stoneware mugs with cobalt blue glaze.jpg" 
+                             alt="Handmade pottery" class="w-full h-64 object-cover">
+                        <div class="absolute top-3 right-3 bg-gold-400 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            Best Seller
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-gray-800">Stoneware Mug Set</h3>
+                            <span class="text-indigo-700 font-medium">$48.00</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">Hand-thrown stoneware with cobalt blue glaze</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex -space-x-1 mr-2">
+                                <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                                <img src="https://randomuser.me/api/portraits/men/24.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                            </div>
+                            <span class="text-xs text-gray-500">12 sold</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg font-medium hover:bg-indigo-50 transition mr-2">
+                                <i class="far fa-heart mr-1"></i> Save
+                            </button>
+                            <button class="flex-1 bg-indigo-700 text-white py-2 rounded-lg font-medium hover:bg-indigo-800 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                             alt="Handmade textile" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-gray-800">Silk Scarf</h3>
+                            <span class="text-indigo-700 font-medium">$65.00</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">Hand-dyed with natural indigo and plant dyes</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex -space-x-1 mr-2">
+                                <img src="https://randomuser.me/api/portraits/women/19.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                                <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                            </div>
+                            <span class="text-xs text-gray-500">8 sold</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg font-medium hover:bg-indigo-50 transition mr-2">
+                                <i class="far fa-heart mr-1"></i> Save
+                            </button>
+                            <button class="flex-1 bg-indigo-700 text-white py-2 rounded-lg font-medium hover:bg-indigo-800 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="Walnut cutting board.jpg" 
+                             alt="Handmade woodwork" class="w-full h-64 object-cover">
+                        <div class="absolute top-3 right-3 bg-gold-400 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            Local Artisan
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-gray-800">Walnut Cutting Board</h3>
+                            <span class="text-indigo-700 font-medium">$85.00</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">Handcrafted from sustainably sourced walnut</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex -space-x-1 mr-2">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                            </div>
+                            <span class="text-xs text-gray-500">5 sold</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg font-medium hover:bg-indigo-50 transition mr-2">
+                                <i class="far fa-heart mr-1"></i> Save
+                            </button>
+                            <button class="flex-1 bg-indigo-700 text-white py-2 rounded-lg font-medium hover:bg-indigo-800 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="Silver.jpg" 
+                             alt="Handmade jewelry" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-gray-800">Silver Pendant Necklace</h3>
+                            <span class="text-indigo-700 font-medium">$120.00</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">Handcrafted sterling silver with turquoise stone</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex -space-x-1 mr-2">
+                                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                                <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                            </div>
+                            <span class="text-xs text-gray-500">15 sold</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg font-medium hover:bg-indigo-50 transition mr-2">
+                                <i class="far fa-heart mr-1"></i> Save
+                            </button>
+                            <button class="flex-1 bg-indigo-700 text-white py-2 rounded-lg font-medium hover:bg-indigo-800 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="vase.jpg" 
+                             alt="Handmade pottery" class="w-full h-64 object-cover">
+                        <div class="absolute top-3 right-3 bg-gold-400 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            New Arrival
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-gray-800">Ceramic Vase</h3>
+                            <span class="text-indigo-700 font-medium">$75.00</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">Wheel-thrown with matte white glaze</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex -space-x-1 mr-2">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                            </div>
+                            <span class="text-xs text-gray-500">3 sold</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg font-medium hover:bg-indigo-50 transition mr-2">
+                                <i class="far fa-heart mr-1"></i> Save
+                            </button>
+                            <button class="flex-1 bg-indigo-700 text-white py-2 rounded-lg font-medium hover:bg-indigo-800 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="Linen Tote Bag.jpg" 
+                             alt="Handmade textile" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-gray-800">Linen Tote Bag</h3>
+                            <span class="text-indigo-700 font-medium">$42.00</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">Handwoven linen with leather handles</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex -space-x-1 mr-2">
+                                <img src="https://randomuser.me/api/portraits/women/36.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Buyer" class="w-5 h-5 rounded-full border border-white">
+                            </div>
+                            <span class="text-xs text-gray-500">20 sold</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg font-medium hover:bg-indigo-50 transition mr-2">
+                                <i class="far fa-heart mr-1"></i> Save
+                            </button>
+                            <button class="flex-1 bg-indigo-700 text-white py-2 rounded-lg font-medium hover:bg-indigo-800 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex items-center space-x-2">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50">
+                        <i class="fas fa-chevron-left text-gray-500"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-700 text-white font-medium">1</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50 font-medium">2</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50 font-medium">3</button>
+                    <span class="px-2">...</span>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50 font-medium">8</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50">
+                        <i class="fas fa-chevron-right text-gray-500"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Newsletter -->
+    <div class="bg-indigo-700 text-white py-16 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Join Our Artisan Community</h2>
+            <p class="text-lg text-indigo-100 mb-8 max-w-2xl mx-auto">Get updates on new products, artisan stories, and exclusive offers.</p>
+            <div class="flex flex-col sm:flex-row justify-center max-w-md mx-auto">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-lg sm:rounded-r-none rounded-r-lg focus:outline-none text-gray-800">
+                <button class="bg-gold-400 hover:bg-gold-500 text-gray-800 font-medium px-6 py-3 sm:rounded-l-none rounded-l-lg rounded-r-lg mt-2 sm:mt-0 sm:ml-0">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-indigo-700 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                            E
+                        </div>
+                        <span class="text-xl font-semibold">Ezrah</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">Connecting creative visions with skilled hands to preserve and celebrate handmade craftsmanship.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-pinterest text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Explore</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Marketplace</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Artisan Directory</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Ezrah Vision</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Become an Artisan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2023 Ezrah. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all siblings
+                this.parentNode.querySelectorAll('.filter-item').forEach(sibling => {
+                    sibling.classList.remove('active-filter');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active-filter');
+                
+                // For radio buttons, check the input
+                const input = this.querySelector('input');
+                if (input) {
+                    input.checked = true;
+                }
+            });
+        });
+        
+        // Mobile menu toggle (would need additional HTML/CSS for full implementation)
+        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
+            // This would toggle a mobile menu in a full implementation
+            console.log('Mobile menu clicked');
+        });
+        
+        // Category tabs functionality
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.category-tab').forEach(t => {
+                    t.classList.remove('bg-indigo-700', 'text-white');
+                    t.classList.add('bg-white', 'border', 'border-gray-200', 'hover:bg-gray-50');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.remove('bg-white', 'border', 'border-gray-200', 'hover:bg-gray-50');
+                this.classList.add('bg-indigo-700', 'text-white');
+                
+                // Here you would filter products based on the selected category
+                console.log('Filtering by category:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

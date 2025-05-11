@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ezrah Community | Connect with Artisans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FDF6EC;
+        }
+        .reaction-btn:hover {
+            transform: translateY(-2px);
+        }
+        .post-card:hover {
+            transform: translateY(-4px);
+        }
+        .profile-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tag:hover {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .sidebar-item:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- New Improved Navigation -->
+<nav class="bg-indigo-700 text-white sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Logo Section -->
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-hands-helping text-2xl"></i>
+            <span class="text-xl font-bold">Ezrah</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-6">
+            <a href="front.html" class="hover:text-indigo-200">Home</a>
+            <a href="mp.html" class="hover:text-indigo-200">Marketplace</a>
+            <a href="#" class="font-semibold underline decoration-2">Community</a>
+            <a href="https://www.amazon.com" class="hover:text-indigo-200">Ezrah Vision</a>
+        </div>
+
+        <!-- Right Side Controls -->
+        <div class="flex items-center space-x-4">
+            <!-- Search Bar (hidden on mobile) -->
+            <div class="relative hidden sm:block">
+                <input type="text" placeholder="Search community..." 
+                       class="rounded-full py-1 px-4 text-sm text-gray-800 w-40 md:w-64 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                <i class="fas fa-search absolute right-3 top-2 text-gray-500"></i>
+            </div>
+            
+            <!-- Login Button -->
+            <a href="#" class="bg-white text-indigo-700 px-4 py-1 rounded-full text-sm font-medium hover:bg-indigo-100 transition">Login</a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden" id="mobileMenuButton">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div class="md:hidden hidden bg-indigo-700 px-4 py-2" id="mobileMenu">
+        <div class="flex flex-col space-y-3">
+            <a href="front.html" class="hover:text-indigo-200 py-1">Home</a>
+            <a href="#" class="hover:text-indigo-200 py-1">Marketplace</a>
+            <a href="#" class="font-semibold underline decoration-2 py-1">Community</a>
+            <a href="#" class="hover:text-indigo-200 py-1">Ezrah Vision</a>
+            <!-- Mobile Search (shown only on mobile) -->
+            <div class="relative pt-2">
+                <input type="text" placeholder="Search community..." 
+                       class="rounded-full py-1 px-4 text-sm text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                <i class="fas fa-search absolute right-3 top-4 text-gray-500"></i>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row">
+        <div class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0 md:pr-4">
+            <div class="bg-white rounded-xl shadow-sm p-6 profile-card transition duration-300">
+                <div class="flex flex-col items-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="w-24 h-24 rounded-full object-cover border-4 border-indigo-100 mb-4">
+                    <h3 class="font-bold text-lg">Sarah Johnson</h3>
+                    <span class="text-sm bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full mb-2">Textile Designer</span>
+                    <div class="flex items-center text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span class="text-sm">Portland, OR</span>
+                    </div>
+                    <div class="flex space-x-4 mb-4">
+                        <div class="text-center">
+                            <div class="font-bold">128</div>
+                            <div class="text-xs text-gray-500">Followers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold">42</div>
+                            <div class="text-xs text-gray-500">Following</div>
+                        </div>
+                    </div>
+                    <button class="w-full bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition mb-4">
+                        Edit Profile
+                    </button>
+                    <div class="w-full border-t pt-4">
+                        <h4 class="font-medium text-sm mb-2">Artisan Badges</h4>
+                        <div class="flex space-x-2">
+                            <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded">Rising Star</span>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Eco-Friendly</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-4 mt-4">
+                <h3 class="font-medium mb-3">Community Events</h3>
+                <div class="space-y-3">
+                    <div class="sidebar-item p-2 rounded-lg transition cursor-pointer">
+                        <div class="flex items-center">
+                            <div class="bg-indigo-100 text-indigo-700 p-2 rounded-lg mr-3">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium">Artisan Meetup</h4>
+                                <p class="text-xs text-gray-500">June 15, 2PM PDT</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar-item p-2 rounded-lg transition cursor-pointer">
+                        <div class="flex items-center">
+                            <div class="bg-indigo-100 text-indigo-700 p-2 rounded-lg mr-3">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium">Weaving Workshop</h4>
+                                <p class="text-xs text-gray-500">June 22, 10AM PDT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full md:w-2/4 lg:w-3/5 md:px-4">
+            <div class="bg-white rounded-xl shadow-sm p-4 mb-6">
+                <div class="flex items-start">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="w-12 h-12 rounded-full object-cover mr-3">
+                    <div class="flex-1">
+                        <textarea placeholder="Share your latest creation with the community..." class="w-full border border-gray-200 rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-indigo-400 resize-none" rows="2"></textarea>
+                        <div class="flex justify-between items-center mt-3">
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-indigo-600">
+                                    <i class="far fa-image"></i>
+                                </button>
+                                <button class="text-gray-500 hover:text-indigo-600">
+                                    <i class="fas fa-link"></i>
+                                </button>
+                            </div>
+                            <button class="bg-indigo-600 text-white px-4 py-1 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                Post
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden post-card transition duration-300">
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="w-12 h-12 rounded-full object-cover mr-3">
+                                <div>
+                                    <h3 class="font-medium">Michael Chen</h3>
+                                    <p class="text-xs text-gray-500">Potter | 2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded mr-2">Master Craftsperson</span>
+                                <button class="text-gray-400 hover:text-indigo-600">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="mt-3 mb-4">Just finished this set of hand-thrown stoneware mugs with cobalt blue glaze. Each one takes about 3 days from start to finish. What do you think of the glaze pattern?</p>
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <img src="https://images.unsplash.com/photo-1584735429095-ca84958a3a94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Pottery" class="w-full h-48 object-cover rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1584735429095-ca84958a3a94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Pottery" class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500 border-b pb-3">
+                            <div class="flex items-center">
+                                <div class="flex -space-x-1">
+                                    <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Like" class="w-5 h-5 rounded-full border border-white">
+                                    <img src="https://randomuser.me/api/portraits/men/24.jpg" alt="Like" class="w-5 h-5 rounded-full border border-white">
+                                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Like" class="w-5 h-5 rounded-full border border-white">
+                                </div>
+                                <span class="ml-2">12 likes</span>
+                            </div>
+                            <div>
+                                <span>8 comments</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between pt-3">
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="far fa-thumbs-up mr-1"></i> Like
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="far fa-comment mr-1"></i> Comment
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="fas fa-share mr-1"></i> Share
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="far fa-bookmark mr-1"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 border-t">
+                        <div class="flex items-start">
+                            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Profile" class="w-8 h-8 rounded-full object-cover mr-2">
+                            <div class="flex-1 bg-white p-3 rounded-lg">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Lisa Rodriguez</span>
+                                    <span class="text-xs text-gray-400">1 hour ago</span>
+                                </div>
+                                <p class="text-sm">These are stunning! The glaze pattern reminds me of ocean waves. Do you do custom orders?</p>
+                                <div class="flex space-x-3 mt-2">
+                                    <button class="text-xs text-gray-400 hover:text-indigo-600">Like</button>
+                                    <button class="text-xs text-gray-400 hover:text-indigo-600">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden post-card transition duration-300">
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Profile" class="w-12 h-12 rounded-full object-cover mr-3">
+                                <div>
+                                    <h3 class="font-medium">Aisha Williams</h3>
+                                    <p class="text-xs text-gray-500">Textile Artist | 5 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded mr-2">Rising Star</span>
+                                <button class="text-gray-400 hover:text-indigo-600">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="mt-3 mb-4">Excited to share my new collection of hand-dyed silk scarves! Each piece is unique, using natural dyes from plants in my garden. The indigo comes from my own plants - it's been a year-long process learning this craft!</p>
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Textile" class="w-full h-40 object-cover rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVfGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Textile" class="w-full h-40 object-cover rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Textile" class="w-full h-40 object-cover rounded-lg">
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500 border-b pb-3">
+                            <div class="flex items-center">
+                                <div class="flex -space-x-1">
+                                    <img src="https://randomuser.me/api/portraits/women/19.jpg" alt="Like" class="w-5 h-5 rounded-full border border-white">
+                                    <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Like" class="w-5 h-5 rounded-full border border-white">
+                                </div>
+                                <span class="ml-2">8 likes</span>
+                            </div>
+                            <div>
+                                <span>3 comments</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between pt-3">
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="far fa-thumbs-up mr-1"></i> Like
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="far fa-comment mr-1"></i> Comment
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="fas fa-share mr-1"></i> Share
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-indigo-600 reaction-btn transition">
+                                <i class="far fa-bookmark mr-1"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4">
+                        <div class="flex">
+                            <button class="text-sm text-indigo-600 font-medium flex items-center">
+                                <i class="fas fa-plus-circle mr-1"></i> Request Custom Work
+                            </button>
+                            <button class="text-sm text-indigo-600 font-medium flex items-center ml-6">
+                                <i class="fas fa-envelope mr-1"></i> Message Artisan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/4 lg:w-1/5 mt-6 md:mt-0 md:pl-4">
+            <div class="bg-white rounded-xl shadow-sm p-4 mb-6">
+                <h3 class="font-medium mb-3">Suggested Artisans to Follow</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover mr-3">
+                            <div>
+                                <h4 class="text-sm font-medium">Carlos Mendez</h4>
+                                <p class="text-xs text-gray-500">Leatherworker</p>
+                            </div>
+                        </div>
+                        <button class="text-xs bg-indigo-600 text-white px-3 py-1 rounded-full hover:bg-indigo-700 transition">
+                            Follow
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/36.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover mr-3">
+                            <div>
+                                <h4 class="text-sm font-medium">Priya Patel</h4>
+                                <p class="text-xs text-gray-500">Jewelry Maker</p>
+                            </div>
+                        </div>
+                        <button class="text-xs bg-indigo-600 text-white px-3 py-1 rounded-full hover:bg-indigo-700 transition">
+                            Follow
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover mr-3">
+                            <div>
+                                <h4 class="text-sm font-medium">James Wilson</h4>
+                                <p class="text-xs text-gray-500">Woodworker</p>
+                            </div>
+                        </div>
+                        <button class="text-xs bg-indigo-600 text-white px-3 py-1 rounded-full hover:bg-indigo-700 transition">
+                            Follow
+                        </button>
+                    </div>
+                </div>
+                <button class="w-full text-center text-indigo-600 text-sm font-medium mt-3 hover:underline">
+                    See more suggestions
+                </button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-4 mb-6">
+                <h3 class="font-medium mb-3">Trending Handmade Posts</h3>
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Trending" class="w-16 h-16 rounded-lg object-cover mr-3">
+                        <div>
+                            <h4 class="text-sm font-medium">Hand-carved wooden bowls</h4>
+                            <p class="text-xs text-gray-500">1.2k engagements</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <img src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Trending" class="w-16 h-16 rounded-lg object-cover mr-3">
+                        <div>
+                            <h4 class="text-sm font-medium">Macrame plant hangers</h4>
+                            <p class="text-xs text-gray-500">890 engagements</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Trending" class="w-16 h-16 rounded-lg object-cover mr-3">
+                        <div>
+                            <h4 class="text-sm font-medium">Hand-poured candles</h4>
+                            <p class="text-xs text-gray-500">750 engagements</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-4">
+                <h3 class="font-medium mb-3">Popular Tags</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#Embroidery</span>
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#Pottery</span>
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#EcoFriendly</span>
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#Woodworking</span>
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#Textiles</span>
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#Jewelry</span>
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#Handmade</span>
+                    <span class="tag bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer transition">#Sustainable</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-100 mt-12 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4 flex items-center">
+                        <i class="fas fa-hands-helping text-xl mr-2 text-indigo-700"></i>
+                        Ezrah
+                    </h3>
+                    <p class="text-sm text-gray-600">Connecting artisans with customers who appreciate handmade quality and craftsmanship.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-500 hover:text-indigo-600"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-indigo-600"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-indigo-600"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-indigo-600"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">About</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-indigo-600">Our Story</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Team</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Careers</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-indigo-600">Help Center</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Community Guidelines</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Safety</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-indigo-600">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-8 pt-6 text-sm text-gray-500">
+                <p>© 2023 Ezrah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
+            const navLinks = document.querySelector('.hidden.md\\:flex');
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-16');
+            navLinks.classList.toggle('left-0');
+            navLinks.classList.toggle('right-0');
+            navLinks.classList.toggle('bg-indigo-700');
+            navLinks.classList.toggle('p-4');
+            navLinks.classList.toggle('space-y-4');
+            navLinks.classList.toggle('space-x-6');
+        });
+
+        document.querySelectorAll('.reaction-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if(this.querySelector('i').classList.contains('far')) {
+                    this.querySelector('i').classList.remove('far');
+                    this.querySelector('i').classList.add('fas');
+                    this.classList.remove('text-gray-500');
+                    this.classList.add('text-indigo-600');
+                } else {
+                    this.querySelector('i').classList.remove('fas');
+                    this.querySelector('i').classList.add('far');
+                    this.classList.remove('text-indigo-600');
+                    this.classList.add('text-gray-500');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
